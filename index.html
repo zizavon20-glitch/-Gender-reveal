@@ -91,7 +91,7 @@ function reveal(){
 
 document.getElementById("start").style.display="none";
 document.getElementById("result").style.display="block";
-
+document.getElementById("bgMusic").play();
 for(let i=0;i<40;i++){
 
 let b=document.createElement("div");
@@ -111,6 +111,8 @@ document.body.appendChild(b);
 }
 
 </script>
-
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 </body>
 </html>
