@@ -3,25 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baby Reveal</title>
+<title>Baby Gender Reveal</title>
+
 <style>
 body{
+margin:0;
+font-family:Arial,sans-serif;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-background:#ffd6e7;
-font-family:Arial;
-margin:0;
-}
-h1{
-font-size:60px;
-color:#e91e63;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+overflow:hidden;
 text-align:center;
+}
+
+#box{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+max-width:350px;
+}
+
+button{
+background:#ff4f87;
+color:white;
+border:none;
+padding:15px 30px;
+font-size:20px;
+border-radius:50px;
+cursor:pointer;
+}
+
+h1{
+color:#ff2f72;
+}
+
+#result{
+display:none;
+animation:pop .8s;
+}
+
+@keyframes pop{
+from{transform:scale(.3);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.balloon{
+position:absolute;
+bottom:-100px;
+font-size:40px;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-120vh);}
 }
 </style>
 </head>
+
 <body>
-<h1>🎀 إنها بنت 🎀<br>It's a Girl!</h1>
+
+<div id="box">
+
+<div id="start">
+<h2>💖 عندي لكم مفاجأة 💖</h2>
+<p>اضغطوا الزر لمعرفة جنس البيبي</p>
+
+<button onclick="reveal()">
+🎁 افتحوا المفاجأة
+</button>
+</div>
+
+<div id="result">
+<h1>🎀 🎀</h1>
+<h2>It's A Girl 💗</h2>
+<p>الحمد لله 🤍</p>
+</div>
+
+</div>
+
+<script>
+
+function reveal(){
+
+document.getElementById("start").style.display="none";
+document.getElementById("result").style.display="block";
+
+for(let i=0;i<40;i++){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.innerHTML=Math.random()>0.5?"🎈":"💖";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.animationDuration=(5+Math.random()*4)+"s";
+
+document.body.appendChild(b);
+
+}
+
+}
+
+</script>
+
 </body>
 </html>
